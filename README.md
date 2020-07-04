@@ -71,6 +71,7 @@ A list of common angular interview questions
            }
          ```
 
+
 5. ### What are the various kinds of directives?
     There are mainly three kinds of directives,
     1. **Components** — These are directives with a template.
@@ -96,6 +97,20 @@ A list of common angular interview questions
       @Output() myEvent = new EventEmitter();
     ```
 
+4. ### Explain local reference variables, @ViewChild() and @ContentChild()?
+    The @ViewChild() and @ViewChildren() decorators in Angular provide a way to access and manipulate DOM elements, directives and components. @ViewChild() is used to query one element from the DOM and @ViewChildren() for multiple elements.
+
+    If you want to access following inside the Parent Component, use @ViewChild() decorator of Angular.
+
+    1. Child Component
+    2. Directive
+    3. DOM Element
+
+    ViewChild returns the first element that matches the selector.
+
+    You can use @ContentChildren to grab a reference to content that has been projected into a component through the use of `<ng-content>`. This is a subtle but important difference.
+    [example](https://stackblitz.com/edit/viewchild-contentchild2?file=src%2Fapp%2Fmessage-container%2Fmessage-container.component.ts)
+
 8. ### What happens if I import the same module twice?
     If multiple modules imports the same module then angular evaluates it only once (When it encounters the module first time). It follows this condition even the module appears at any level in a hierarchy of imported NgModules.
 
@@ -111,26 +126,3 @@ A list of common angular interview questions
      }
      ```
 
-3. ### What is an observable?
-    An Observable is a unique Object similar to a Promise that can help manage async code. Observables are not part of the JavaScript language so we need to rely on a popular Observable library called RxJS.
-    The observables are created using new keyword.
-    Let see the simple example of observable,
-    ```javascript
-    import { Observable } from 'rxjs';
-
-    const observable = new Observable(observer => {
-      setTimeout(() => {
-        observer.next('Hello from an Observable!');
-      }, 2000);
-    });
-    ```
-
-4. ### What is the difference between promise and observable?
-    Below are the list of differences between promise and observable,
-
-    | Observable | Promise |
-    |---- | --------- |
-    | Declarative: Computation does not start until subscription so that they can be run whenever you need the result | Execute immediately on creation|
-    | Provide multiple values over time | Provide only one |
-    | Subscribe method is used for error handling which makes centralized and predictable error handling| Push errors to the child promises |
-    | Provides chaining and subscription to handle complex applications | Uses only .then() clause |
